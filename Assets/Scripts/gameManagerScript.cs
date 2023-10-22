@@ -21,6 +21,7 @@ public class gameManagerScript : MonoBehaviour
     private float gameOverTimer = 0;
     public GameObject gameOverPanel;
     [SerializeField] private float darknessTimer = 2f;
+    private GameObject player;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class gameManagerScript : MonoBehaviour
         {
             ghost.color = ghostColor;
         }
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -98,6 +100,7 @@ public class gameManagerScript : MonoBehaviour
     public void GameOver()
     {
         //Debug.Log("Game Over!");
+        Destroy(player);
         gameTimerText.text = gameTimer + " seconds!";
         gameOverPanel.SetActive(true);
         gameOver = true;
